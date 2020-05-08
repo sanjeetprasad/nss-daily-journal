@@ -3,28 +3,12 @@
     represents a journal entry about what you learned today
 */
 
-const JournalEntries = [
-    {
-    date: "5/4/20",
-    concepts: "Es6 modules",
-    entry: "keep track of the study",
-    mood: "hsppy"
-},
-
-{
-    date: "4/15/20",
-    concepts: "Styling with css, Semantic HTML, Debugger",
-    entry: "I got so much of deep knowledge of css and html and debugger was amazing",
-    mood: "happy"
-},
-
-{
-    date: "4/25/20",
-    concepts: "DOM Manipulating, Object, Function, API and Fetching data",
-    entry: "I enjoy learning object, Function,API and fetching data",
-    mood: "happy"
-}
-]
+fetch("http://localhost:3000/entries") // Fetch from the API
+    .then(entries => entries.json() )  // Parse as JSON
+    .then(entries => {
+        console.table(entries)
+        renderJournalEntries(entries)// What should happen when we finally have the array?
+    })
 
 const makeJournalEntryComponent = (journalEntry) => {
     return `
@@ -43,4 +27,4 @@ const renderJournalEntries = (entries) => {
     }
 
 }
-renderJournalEntries(journalEntries)
+//renderJournalEntries(journalEntries)
